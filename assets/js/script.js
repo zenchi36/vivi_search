@@ -91,7 +91,7 @@ function clickResetKeywordButton() {
 }
 
 function onClickTagButton(event) {
-  let hashTag = event.target.value;
+  let hashTag = event.target.textContent;
   let keyword = document.getElementById('textboxKeyword').value;
   let tags = new Set(keyword.split(" ").filter(tag => tag !== ""));
   hashTag.split(" ").forEach(tag => {
