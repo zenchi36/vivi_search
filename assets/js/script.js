@@ -111,7 +111,7 @@ function openPage() {
     searchQuery = keyword;
   }
   if (document.getElementById('checkboxSoraChanLoveModeEnabled').checked === true) {
-    searchQuery += " from:tokino_sora";
+    searchQuery += " from:kikiraravivi";
   }
   if (document.getElementById('radioFilterOptionMedia').checked === true) {
     searchQuery += " filter:media";
@@ -138,7 +138,7 @@ function openYrtPage() {
     searchQuery = keyword.replaceAll(" ", "+");
   }
   if (document.getElementById('checkboxSoraChanLoveModeEnabled').checked === true) {
-    searchQuery += "+id%3Atokino_sora";
+    searchQuery += "+id%3Akikiraravivi";
   }
   if (document.getElementById('radioFilterOptionMedia').checked === true) {
     searchQuery += "&mtype=image";
