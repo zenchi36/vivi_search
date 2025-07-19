@@ -27,7 +27,7 @@ window.addEventListener('load', function confirmBlockRefresh() {
 })
 
 function refreshConfirmAreaOption() {
-  if (document.getElementById('checkboxSoraChanLoveModeEnabled').checked === true) {
+  if (document.getElementById('checkboxKikiraraViviModeEnabled').checked === true) {
     document.getElementById('confirmValueOption').innerHTML = document.getElementById('textOption').innerText;
     if (document.getElementById('radioFilterOptionMedia').checked === true) {
         document.getElementById('confirmValueOption').innerHTML += "<br>" + document.getElementById('textOptionMedia').innerText;
@@ -110,7 +110,7 @@ function openPage() {
   } else {
     searchQuery = keyword;
   }
-  if (document.getElementById('checkboxSoraChanLoveModeEnabled').checked === true) {
+  if (document.getElementById('checkboxKikiraraViviModeEnabled').checked === true) {
     searchQuery += " from:kikiraravivi";
   }
   if (document.getElementById('radioFilterOptionMedia').checked === true) {
@@ -125,7 +125,7 @@ function openPage() {
   if (document.getElementById('checkboxUntilEnabled').checked === true) {
     searchQuery += " until:" + document.getElementById('textboxUntilDate').value + "_" + document.getElementById('textboxUntilTime').value + "_JST";
   }
-  const openUrl = "https://x.com/search?q=" + encodeURIComponent(searchQuery) + "&src=typed_query&f=live";
+  const openUrl = "https://x.com/search?q=" + encodeURIComponent(searchQuery) + "&f=live";
   window.open(openUrl, '_blank');
 }
 function openYrtPage() {
@@ -137,7 +137,7 @@ function openYrtPage() {
   } else {
     searchQuery = keyword.replaceAll(" ", "+");
   }
-  if (document.getElementById('checkboxSoraChanLoveModeEnabled').checked === true) {
+  if (document.getElementById('checkboxKikiraraViviModeEnabled').checked === true) {
     searchQuery += "+id%3Akikiraravivi";
   }
   if (document.getElementById('radioFilterOptionMedia').checked === true) {
