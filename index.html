@@ -1,9 +1,162 @@
 <!doctype html>
+<!--
+	ヴィヴィサーチ バージョン：0.1.0
+	2025/7/19 Copyright @zenchi36
+
+	綺々羅々ヴィヴィに関するXの検索を少し楽にするページです。
+	ん～～ヴィヴィ！
+
+	ぬんサーチ(作者@minatsukijun)を参考にさせていただきました。感謝
+-->
 <html lang="jp">
-<head>
-  <title>ヴィヴィサーチ（Vivi Search）</title>
+<head prefix="og: https://ogp.me/ns#">
+<link rel="canonical" href="https://zenchi36.github.io/vivi_search/">
+<meta charset="utf-8">
+<title data-language-key="page-title">ヴィヴィサーチ（Vivi Search）</title>
+<meta name="description" content="「ヴィヴィサーチ」はホロライブ Dev_is所属のVtuber「綺々羅々ヴィヴィ」に関するXポストの検索ツールです。検索日時の範囲や、よく使われるハッシュタグなどを、簡単に設定することができます。推し活やエゴサが楽になるかも。"/>
+<meta name="keywords" content="ヴィヴィ,エゴサ,X,Twitter,ハッシュタグ,ポスト,検索">
+<meta name="viewport" content="width=device-width,initial-scale=1.0 maximum-scale=1.0 viewport-fit=cover">
+<meta property="og:url" content="https://zenchi36.github.io/vivi_search/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="ヴィヴィサーチ（Vivi Search）" />
+<meta property="og:description" content="「ヴィヴィサーチ」はホロライブ Dev_is所属のVtuber「綺々羅々ヴィヴィ」に関するXポストの検索ツールです。検索日時の範囲や、よく使われるハッシュタグなどを、簡単に設定することができます。推し活やエゴサが楽になるかも。" />
+<meta property="og:site_name" content="マムールのGitHub" />
+<meta property="og:image" content="https://zenchi36.github.io/vivi_search/assets/img/xxx_xxx-search_DS_NDSL.jpg" />
+<link rel="icon" type="image/png" href="assets/img/favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon/favicon.svg" />
+<link rel="shortcut icon" href="assets/img/favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="stylesheet" href="assets/css/color.css" type="text/css">
+<link rel="stylesheet" href="assets/css/style.css" type="text/css">
+
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUa6mY2z5gWv8yU7P1h2eBzA4W9hhT9OY1r0P1S67B6sHRw7wr/2y8ko+Vkw" crossorigin="anonymous">
+
 </head>
+
+<header>
+  <div class="language-select-wrapper no-border text-align-right"><span data-language-key="label-language-selector">Language:</span>
+    <select class="language-selector" id="language">
+      <option value="ja">日本語</option>
+      <option value="en">English</option>
+      <option value="zh-CN">简体中文</option>
+      <option value="zh-TW">繁體中文</option>
+      <option value="ko">한국어</option>
+    </select>
+  </div>
+</header>
+
 <body>
-  工事中
+<div ontouchstart="">
+  <h1 data-language-key="page-title">ヴィヴィサーチ（Vivi Search）</h1>
+  <div data-language-key="text-description" class="no-border font-size-small"> 「ヴィヴィサーチ」はホロライブ Dev_is所属のVtuber「綺々羅々ヴィヴィ」に関するXポストの検索ツールです。検索日時の範囲や、よく使われるハッシュタグなどを、簡単に設定することができます。推し活やエゴサが楽になるかも。</div>
+  <div class="text-align-right font-size-small"><span data-language-key="text-share">ん～ヴィヴィ！👉️</span> <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-via="zenchi36" data-hashtags="ヴィヴィサーチ" data-show-count="false">Post</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+  </div>
+  <!-- 告知の表示用 -->
+  <div class="border p-3 mb-3" align="center">
+    <h2 data-language-key="heading-news">💅 Vivi Topics 💅</h2>
+    <div class="border border-2 border-dark p-3 my-2">
+      <h5> 工事中 近日公開 </h5>
+    </div>
+  </div>
+  <div class="block-date border">
+    <h2 data-language-key="heading-date">1. 日付範囲指定</h2>
+    <span data-language-key="date-text-notes" class="text-notes">※チェックボックスで日付範囲の有効/無効を切り替えられます</span>
+    <div class="border border-2 border-dark p-3 my-2">
+      <input type="checkbox" name="since-enabled" id="checkboxSinceEnabled" onChange="refreshConfirmAreaSince()">
+      <span data-language-key="text-date-01">いつから？</span><br>
+      <input class="form-control form-control-sm" type="date" name="since-date" id="textboxSinceDate" value="2017-09-07" onChange="refreshConfirmAreaSince()">
+      <details id="detailsSetSinceTime">
+        <summary><span data-language-key="text-set-time">時刻を設定する</span></summary>
+        <input class="form-control form-control-sm" type="time" step="1" name="since-time" id="textboxSinceTime" value="00:00:00" onChange="refreshConfirmAreaSince()">
+      </details>
+      <input data-language-key="text-date-03" class="btn btn-outline-primary btn-full button-set-yesterday" type="button" name="since-yesterday" id="buttonSinceYesterdayTag" value="昨日をセット" onClick="clickSinceYesterdayButton();refreshConfirmAreaSince()">
+      <input type="checkbox" name="until-enabled" id="checkboxUntilEnabled" onChange="refreshConfirmAreaUntil()">
+      <span data-language-key="text-date-04">いつまで？</span><br>
+      <input class="form-control form-control-sm" type="date" name="until-date" id="textboxUntilDate" onChange="refreshConfirmAreaUntil()">
+      <details id="detailsSetUntilTime">
+        <summary><span data-language-key="text-set-time">時刻を設定する</span></summary>
+        <input class="form-control form-control-sm" type="time" step="1" name="until-time" id="textboxUntilTime" value="23:59:59" onChange="refreshConfirmAreaUntil()">
+      </details>
+    </div>
+  </div>
+  <div class="keyword-block border">
+    <h2 data-language-key="heading-keyword">2. キーワード指定</h2>
+    <div class="border border-2 border-dark p-3 my-2">
+      <input type="radio" class="radio-search-option" name="radio-search-option" id="radioSearchOptionAnd" value="AND" onChange="refreshConfirmAreaAndOr()" checked>
+      <span data-language-key="radio-and">"AND"で検索</span>
+      <input type="radio" class="radio-search-option" name="radio-search-option" id="radioSearchOptionOr" value="OR" onChange="refreshConfirmAreaAndOr()">
+      <span data-language-key="radio-or">"OR"で検索</span><br>
+      <p>
+        <input data-language-key="textbox-keyword" class="form-control" type="text" name="name" id="textboxKeyword" placeholder="検索したいキーワードを入力">
+        <span data-language-key="keyword-text-notes" class="text-notes">※半角スペース区切り</span><br>
+        <input data-language-key="text-keyword-rstbtn" class="btn btn-outline-primary btn-full button-reset-keyword" type="button" name="reset-keyword" id="buttonResetKeyword" value="キーワードをリセット" onClick="clickResetKeywordButton()">
+      </p>
+    </div>
+    <div class="border border-2 border-dark p-3 my-2">
+      <h3 data-language-key="heading-autoinput-btn">キーワードを自動入力できるボタン</h3>
+      <h4 data-language-key="heading-streaming-tag">キーワード</h4>
+      <div>
+        <input class="btn btn-outline-primary btn-half" type="button" value="#綺々羅々ヴィヴィ" onClick="onClickTagButton(event)">
+        <input class="btn btn-outline-primary btn-half" type="button" value="#ヴィヴィライブ" onClick="onClickTagButton(event)">
+        <input class="btn btn-outline-primary btn-half" type="button" value="#ヴィヴィメイク" onClick="onClickTagButton(event)">
+        <input class="btn btn-outline-primary btn-half" type="button" value="#ヴィヴィネイル" onClick="onClickTagButton(event)">
+        <input class="btn btn-outline-primary btn-half" type="button" value="#ヴィヴィうた" onClick="onClickTagButton(event)">
+        <input class="btn btn-outline-primary btn-half" type="button" value="#ヴィヴィっときた" onClick="onClickTagButton(event)">
+        <input class="btn btn-outline-primary btn-half" type="button" value="#ヴィヴィっときゅん" onClick="onClickTagButton(event)">
+      </div>
+    </div>
+  </div>
+  <div class="block-option border">
+    <h2 data-language-key="heading-option">オプション</h2>
+    <div class="border border-2 border-dark p-3 my-2">
+      <input type="checkbox" name="sorachan-love" id="checkboxSoraChanLoveModeEnabled" onChange="refreshConfirmAreaOption()">
+      <span data-language-key="text-option" id="textOption">綺々羅々ヴィヴィ（@kikiraravivi）のポストだけを検索</span><br>
+      <h4 data-language-key="text-option-filter">フィルター</h4>
+      <input type="radio" class="radio-filter-option" name="radio-filter-option" id="radioFilterOptionNone" value="NONE" onChange="refreshConfirmAreaOption()" checked>
+      <span data-language-key="text-option-nofilter" id="textOptionNoFileter">画像・動画やスペースの絞り込みを行わない</span><br>
+      <input type="radio" class="radio-filter-option" name="radio-filter-option" id="radioFilterOptionMedia" value="MEDIA" onChange="refreshConfirmAreaOption()">
+      <span data-language-key="text-media-only" id="textOptionMedia">画像・動画付きのポストだけを検索</span><br>
+      <input type="radio" class="radio-filter-option" name="radio-filter-option" id="radioFilterOptionSpace" value="SPACE" onChange="refreshConfirmAreaOption()">
+      <span data-language-key="text-space-only" id="textOptionSpace">スペースのポストだけを検索</span><br>
+  </div>
+  <div class="block-search border">
+    <h2 data-language-key="heading-search">3. 設定した条件でXを検索</h2>
+    <div class="border border-2 border-dark p-3 my-2">
+      <details id="detailsSummaryConfirmThisSearch">
+        <summary><span data-language-key="summary-confirm-this-search">検索内容を確認する</span></summary>
+        <h4 data-language-key="text-date-01">いつから？</h4>
+        <span class="confirm-this-search" id="confirmValueSince"></span>
+        <h4 data-language-key="text-date-04">いつまで？</h4>
+        <span class="confirm-this-search" id="confirmValueUntil"></span>
+        <h4 data-language-key="text-keyword">キーワード</h4>
+        <strong><span data-language-key="andor-label"></span><span id="confirmValueAndOr"></span></strong><br>
+        <span class="confirm-this-search" id="confirmValueKeyword"></span>
+        <h4 data-language-key="heading-option">オプション</h4>
+        <span class="confirm-this-search" id="confirmValueOption"></span> </details>
+      <input data-language-key="text-search-btn" class="btn btn-outline-primary btn-search" id="searchBtn" type="button" value="検索" onClick="openPage()">
+    </div>
+    <div class="floating-nunnun-wrap border" id="floatingNunnun">
+      <input data-language-key="text-search-btn" class="btn btn-outline-primary btn-search btn-floating" type="button" value="検索" onClick="openPage()">
+    </div>
+  </div>
+  <div class ="border">
+    <h2 data-language-key="heading-sister-page">参考サイト</h2>
+    <div class="border border-2 border-dark p-3 my-2">
+      <input data-language-key="text-nun-search" class="btn btn-outline-primary btn-half" type="button" value="ぬんサーチ" onClick="location.href='https://junminatsuki.github.io/nun-search-x/'">
+    </div>
+  </div>
+  <div class="text-align-right font-size-small"><span data-language-key="text-share">ん～ヴィヴィ！👉️</span> <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-via="zenchi36" data-hashtags="ヴィヴィサーチ" data-show-count="false">Post</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+  <div class="text-align-right font-size-small"><span data-language-key="text-share">ん～ヴィヴィ！👉️</span> <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-via="zenchi36" data-hashtags="ヴィヴィサーチ" data-show-count="false">Post</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+  </div>
+</div>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-qFfW1fZLZs9OzN8W8q5ICJiR8X2yYr1h4DYw6QbplG13L5uOa1WsmwzUuX4XOSjK" crossorigin="anonymous"></script>
+
 </body>
+<script src="assets/js/script.js"></script>
+<script src="assets/js/language.js"></script>
+<script src="assets/js/language-switcher.js"></script>
 </html>
