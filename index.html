@@ -3,13 +3,10 @@
 <head prefix="og: https://ogp.me/ns#">
   <meta charset="utf-8">
   <title data-language-key="page-title">ヴィヴィサーチ（Vivi Search）</title>
-  <meta name="description" content="「ヴィヴィサーチ」はホロライブ Dev_is所属のVtuber「綺々羅々ヴィヴィ」に関するXポストの検索ツールです。">
+  <meta name="description" content="「ヴィヴィサーチ」はhololive DEV_IS所属のVtuber「綺々羅々ヴィヴィ」に関するXポストの検索ツールです。">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="ヴィヴィサーチ（Vivi Search）">
-  <meta property="og:description" content="ホロライブ Dev_is所属のVtuber「綺々羅々ヴィヴィ」に関するXポスト検索ツール。">
-  <meta property="og:image" content="https://zenchi36.github.io/vivi_search/assets/img/xxx_xxx-search_DS_NDSL.jpg">
-
-  <link rel="icon" href="assets/img/favicon/favicon.ico">
+  <meta property="og:description" content="hololive DEV_IS所属のVtuber「綺々羅々ヴィヴィ」に関するXポスト検索ツール。">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <body>
@@ -20,9 +17,6 @@
       <select class="form-select form-select-sm w-auto" id="language">
         <option value="ja">日本語</option>
         <option value="en">English</option>
-        <option value="zh-CN">简体中文</option>
-        <option value="zh-TW">繁體中文</option>
-        <option value="ko">한국어</option>
       </select>
     </div>
 
@@ -30,7 +24,7 @@
     <div class="mb-4">
       <h1 data-language-key="page-title">ヴィヴィサーチ（Vivi Search）</h1>
       <p class="small" data-language-key="text-description">
-        「ヴィヴィサーチ」はホロライブ Dev_is所属のVtuber「綺々羅々ヴィヴィ」に関するXポストの検索ツールです。検索日時の範囲や、よく使われるハッシュタグなどを簡単に設定できます。
+        
       </p>
       <div class="text-end">
         <span data-language-key="text-share">ん～ヴィヴィ！👉️</span>
@@ -105,12 +99,12 @@
           <input type="text" class="form-control" id="textboxKeyword" placeholder="検索したいキーワードを入力" data-language-key="textbox-keyword">
           <div class="form-text" data-language-key="keyword-text-notes">※半角スペース区切り</div>
         </div>
-
         <button class="btn btn-outline-primary btn-sm mb-3" id="buttonResetKeyword" onclick="clickResetKeywordButton()" data-language-key="text-keyword-rstbtn">キーワードをリセット</button>
 
-        <h4 data-language-key="heading-streaming-tag">キーワード</h4>
+        <h4 data-language-key="text-keyword">キーワード</h4>
         <div class="d-flex flex-wrap gap-2">
           <button class="btn btn-outline-primary btn-sm" onclick="onClickTagButton(event)">#綺々羅々ヴィヴィ</button>
+          <button class="btn btn-outline-primary btn-sm" onclick="onClickTagButton(event)">ヴィヴィ</button>
           <button class="btn btn-outline-primary btn-sm" onclick="onClickTagButton(event)">#ヴィヴィライブ</button>
           <button class="btn btn-outline-primary btn-sm" onclick="onClickTagButton(event)">#ヴィヴィメイク</button>
           <button class="btn btn-outline-primary btn-sm" onclick="onClickTagButton(event)">#ヴィヴィネイル</button>
@@ -128,8 +122,8 @@
       </div>
       <div class="card-body">
         <div class="form-check mb-3">
-          <input type="checkbox" class="form-check-input" id="checkboxSoraChanLoveModeEnabled" onchange="refreshConfirmAreaOption()">
-          <label class="form-check-label" for="checkboxSoraChanLoveModeEnabled" data-language-key="text-option">綺々羅々ヴィヴィ（@kikiraravivi）のポストだけを検索</label>
+          <input type="checkbox" class="form-check-input" id="checkboxKikiraraViviModeEnabled" onchange="refreshConfirmAreaOption()">
+          <label class="form-check-label" for="checkboxKikiraraViviModeEnabled" data-language-key="text-option">綺々羅々ヴィヴィ（@kikiraravivi）のポストだけを検索</label>
         </div>
 
         <h5 data-language-key="text-option-filter">フィルター</h5>
@@ -170,12 +164,6 @@
         </details>
         <button class="btn btn-primary w-100" id="searchBtn" onclick="openPage()" data-language-key="text-search-btn">検索</button>
       </div>
-    </div>
-
-    <!-- 参考リンク -->
-    <div class="mb-4">
-      <h2 data-language-key="heading-sister-page">参考サイト</h2>
-      <button class="btn btn-outline-secondary" onclick="location.href='https://junminatsuki.github.io/nun-search-x/'" data-language-key="text-nun-search">ぬんサーチ</button>
     </div>
   </div>
 
