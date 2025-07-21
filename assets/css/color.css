@@ -1,41 +1,80 @@
-@charset "utf-8";
-
 :root {
-	/** 共通カラー */
-	--color-decoration-yellow: #F0D46C;
-	--color-decoration-red: #FE2B56;
-	
-	/** ライトテーマカラー */
-	--color-div-border-light: #6471EC;
-	--color-div-sub-border-light: #FE2B56;
-	--color-body-background-light: #FFFFFF;
-	--color-text-light: #16184C;
-	--color-text-strong-light: #FE2B56;
-	--color-caption-light: #6471EC;
-	--color-notes-light: #666666;
-	--color-input-border-light: #16184C;
-	--color-input-border-active-light: #FE2B56;
-	--color-input-text-light: #16184C;
-	--color-input-text-active-light: #FFFFFF;
-	--color-input-background-light: #FDF9D9;
-	--color-input-background-active-light: #FE2B56;
-	--color-footer-text-light: #FFFFFF;
-	--color-footer-background-light: #16184C;
-	
-	/** ダークテーマカラー */
-	--color-div-border-dark: #FFFFFF;
-	--color-div-sub-border-dark: #E5D198;
-	--color-body-background-dark: #3D3954;
-	--color-text-dark: #FFFFFF;
-	--color-text-strong-dark: #FBDCE6;
-	--color-caption-dark: #B1BDFF;	
-	--color-notes-dark: #BBBBBB;
-	--color-input-border-dark: #FFFFFF;
-	--color-input-border-active-dark: #F0D46C;
-	--color-input-text-dark: #3B312F;	
-	--color-input-text-active-dark: #362F2F;
-	--color-input-background-dark: #FFFFFF;
-	--color-input-background-active-dark: #F0D46C;
-	--color-footer-text-dark: #FFFFFF;
-	--color-footer-background-dark: #392F2E;
+  --vivi-pink: #FF90CC;
+  --vivi-pink-dark: #e178b3;
+  --vivi-pink-light: #ffd3e8;
+  --vivi-pink-text: #660033;
+}
+
+/* 全体の背景や基本文字色 */
+body {
+  background-color: #fffafc;
+  color: var(--vivi-pink-text);
+}
+
+/* タイトルなど */
+h1, h2, h4, .card-header {
+  color: var(--vivi-pink-text);
+}
+
+/* カードの縁や影 */
+.card {
+  border: 1px solid var(--vivi-pink);
+  box-shadow: 0 2px 6px rgba(255, 144, 204, 0.15);
+}
+
+/* カードヘッダーの背景 */
+.card-header {
+  background-color: var(--vivi-pink-light);
+}
+
+/* ボタン：基本カラー */
+.btn-primary {
+  background-color: var(--vivi-pink);
+  border-color: var(--vivi-pink-dark);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--vivi-pink-dark);
+  border-color: var(--vivi-pink-text);
+}
+
+/* アウトラインボタン */
+.btn-outline-primary {
+  color: var(--vivi-pink);
+  border-color: var(--vivi-pink);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background-color: var(--vivi-pink);
+  color: white;
+  border-color: var(--vivi-pink-dark);
+}
+
+/* チェックボックスやラジオのアクセント */
+.form-check-input:checked {
+  background-color: var(--vivi-pink);
+  border-color: var(--vivi-pink-dark);
+}
+
+/* 入力フォーカス時の色 */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--vivi-pink);
+  box-shadow: 0 0 0 0.25rem rgba(255, 144, 204, 0.25);
+}
+
+/* ヘルプテキストなど */
+.form-text {
+  color: var(--vivi-pink-text);
+}
+
+/* リンク */
+a {
+  color: var(--vivi-pink-dark);
+}
+
+a:hover {
+  color: var(--vivi-pink-text);
 }
