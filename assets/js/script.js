@@ -63,7 +63,7 @@ function openPage() {
     searchQuery += " until:" + document.getElementById('textboxUntilDate').value + "_" + document.getElementById('textboxUntilTime').value + "_JST";
   }
   const openUrl = "https://x.com/search?q=" + encodeURIComponent(searchQuery) + "&f=live";
-  window.open(openUrl, '_blank');
+  window.open(openUrl);
 }
 
 function remainBirthDay() {
