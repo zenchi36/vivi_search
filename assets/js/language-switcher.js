@@ -30,5 +30,4 @@ const changeLanguage = function (lang) {
       element.value = text;
     }
   });
-  refreshConfirmAreaOption();
 }
