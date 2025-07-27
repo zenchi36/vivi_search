@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head prefix="og: https://ogp.me/ns#">
   <meta charset="utf-8">
   <title data-language-key="page-title">ヴィヴィサーチ（Vivi Search）</title>
@@ -10,6 +11,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/color.css">
 </head>
+
 <body>
   <div class="container py-4">
     <!-- 言語選択 -->
@@ -24,22 +26,39 @@
     <!-- タイトル・説明 -->
     <div class="mb-4">
       <h1 data-language-key="page-title">ヴィヴィサーチ（Vivi Search）</h1>
-      <p class="small" data-language-key="text-description">
-        
-      </p>
+      <p class="small" data-language-key="text-description"></p>
+
       <div class="text-end">
         <span data-language-key="text-share">ん～ヴィヴィ！👉️</span>
-        <a class="twitter-share-button" data-hashtags="ヴィヴィサーチ" data-show-count="false" data-via="zenchi36" data-hashtags="ヴィヴィサーチ"
-           href="https://twitter.com/share?ref_src=twsrc%5Etfw">Post</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+        <a class="twitter-share-button" data-hashtags="ヴィヴィサーチ" data-show-count="false" data-via="zenchi36"
+          data-hashtags="ヴィヴィサーチ" href="https://twitter.com/share?ref_src=twsrc%5Etfw">Post</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
     </div>
 
-    <!-- ニュース -->
-    <div class="card text-center mb-4">
-      <div class="card-body">
-        <h2 data-language-key="heading-news">💅 Vivi Topics 💅</h2>
-        <div class="border border-dark p-3">
-          <h5>工事中 近日公開</h5>
+    <!-- ヴィヴィタイマー -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h2 data-language-key="heading-vivi-timer">ヴィヴィタイマー</h2>
+      </div>
+      <div class="card-body text-center">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="card-text" data-language-key="text-hbd" id="todayBirth" style="display:none;">🎂誕生日おめでとう🎉</div>
+              <div id="nextBirth">
+                <div class="card-text" data-language-key="text-timer-birth">お誕生日まで</div>
+                <div class="card-text" id="rBirthDate"></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card-text" data-language-key="text-debut" id="todayAniv" style="display:none;">🎤デビューおめでとう🎉</div>
+              <div id="nextAniv">
+                <span id="rAnivYear">1</span><span class="card-text" data-language-key="text-timer-aniv">周年まで</span>
+                <div class="card-text" id="rAnivDate"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -47,65 +66,34 @@
     <!-- 日付範囲 -->
     <div class="card mb-4">
       <div class="card-header">
-        <h2 data-language-key="heading-date">1. 日付範囲指定</h2>
+        <h2 data-language-key="heading-keyword-search">キーワード検索</h2>
       </div>
       <div class="card-body">
-        <p class="small text-muted" data-language-key="date-text-notes">※チェックボックスで日付範囲の有効/無効を切り替えられます</p>
 
-        <div class="mb-3">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="checkboxSinceEnabled" onchange="refreshConfirmAreaSince()">
-            <label class="form-check-label" for="checkboxSinceEnabled" data-language-key="text-date-01">いつから？</label>
-          </div>
-          <input type="date" class="form-control form-control-sm" id="textboxSinceDate" value="2017-09-07" onchange="refreshConfirmAreaSince()">
-          <details class="mt-2">
-            <summary data-language-key="text-set-time">時刻を設定する</summary>
-            <input type="time" step="1" value="00:00:00" class="form-control form-control-sm mt-1" id="textboxSinceTime" onchange="refreshConfirmAreaSince()">
-          </details>
-          <button class="btn btn-outline-primary btn-sm mt-2" id="buttonSinceYesterdayTag" onclick="clickSinceYesterdayButton();refreshConfirmAreaSince()" data-language-key="text-date-03">昨日をセット</button>
-        </div>
-
-        <div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="checkboxUntilEnabled" onchange="refreshConfirmAreaUntil()">
-            <label class="form-check-label" for="checkboxUntilEnabled" data-language-key="text-date-04">いつまで？</label>
-          </div>
-          <input type="date" class="form-control form-control-sm" id="textboxUntilDate" onchange="refreshConfirmAreaUntil()">
-          <details class="mt-2">
-            <summary data-language-key="text-set-time">時刻を設定する</summary>
-            <input type="time" step="1" value="23:59:59" class="form-control form-control-sm mt-1" id="textboxUntilTime" onchange="refreshConfirmAreaUntil()">
-          </details>
-        </div>
-      </div>
-    </div>
-
-    <!-- キーワード -->
-    <div class="card mb-4">
-      <div class="card-header">
-        <h2 data-language-key="heading-keyword">2. キーワード指定</h2>
-      </div>
-      <div class="card-body">
         <div class="mb-3">
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="radioSearchOptionAnd" name="radio-search-option" value="AND" checked onchange="refreshConfirmAreaAndOr()">
-            <label class="form-check-label" for="radioSearchOptionAnd" data-language-key="radio-and">"AND"で検索</label>
+            <input class="form-check-input" type="radio" id="radioSearchOptionAnd" name="radio-search-option" value="AND" checked>
+            <label class="form-check-label" for="radioSearchOptionAnd" data-language-key="text-and">"AND"で検索</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="radioSearchOptionOr" name="radio-search-option" value="OR" onchange="refreshConfirmAreaAndOr()">
-            <label class="form-check-label" for="radioSearchOptionOr" data-language-key="radio-or">"OR"で検索</label>
+            <input class="form-check-input" type="radio" id="radioSearchOptionOr" name="radio-search-option" value="OR">
+            <label class="form-check-label" for="radioSearchOptionOr" data-language-key="text-or">"OR"で検索</label>
           </div>
         </div>
 
+
         <div class="mb-3">
-          <input type="text" class="form-control" id="textboxKeyword" placeholder="検索したいキーワードを入力" data-language-key="textbox-keyword">
-          <div class="form-text" data-language-key="keyword-text-notes">※半角スペース区切り</div>
+          <input type="text" class="form-control" id="textboxKeyword" placeholder="検索したいキーワードを入力"
+            data-language-key="placeholder-keyword">
+          <div class="form-text" data-language-key="text-keyword-notes">※半角スペース区切り</div>
         </div>
-        <button class="btn btn-outline-primary btn-sm mb-3" id="buttonResetKeyword" onclick="clickResetKeywordButton()" data-language-key="text-keyword-rstbtn">キーワードをリセット</button>
+        <button class="btn btn-outline-primary btn-sm mb-3" id="buttonResetKeyword" onclick="clickResetKeywordButton()"
+          data-language-key="text-keyword-rst">キーワードをリセット</button>
 
         <h4 data-language-key="text-keyword">キーワード</h4>
-        <div class="d-flex flex-wrap gap-2">
-          <button class="btn btn-outline-primary btn-sm" onclick="onClickTagButton(event)">#綺々羅々ヴィヴィ</button>
+        <div class="d-flex flex-wrap gap-2 mb-3">
           <button class="btn btn-outline-primary btn-sm" onclick="onClickTagButton(event)">ヴィヴィ</button>
+          <button class="btn btn-outline-primary btn-sm" onclick="onClickTagButton(event)">#綺々羅々ヴィヴィ</button>
           <button class="btn btn-outline-primary btn-sm" onclick="onClickTagButton(event)">#ヴィヴィライブ</button>
           <button class="btn btn-outline-primary btn-sm" onclick="onClickTagButton(event)">#ヴィヴィメイク</button>
           <button class="btn btn-outline-primary btn-sm" onclick="onClickTagButton(event)">#ヴィヴィネイル</button>
@@ -113,57 +101,81 @@
           <button class="btn btn-outline-primary btn-sm" onclick="onClickTagButton(event)">#ヴィヴィっときた</button>
           <button class="btn btn-outline-primary btn-sm" onclick="onClickTagButton(event)">#ヴィヴィっときゅん</button>
         </div>
-      </div>
-    </div>
 
-    <!-- オプション -->
-    <div class="card mb-4">
-      <div class="card-header">
-        <h2 data-language-key="heading-option">オプション</h2>
-      </div>
-      <div class="card-body">
-        <div class="form-check mb-3">
-          <input type="checkbox" class="form-check-input" id="checkboxKikiraraViviModeEnabled" onchange="refreshConfirmAreaOption()">
-          <label class="form-check-label" for="checkboxKikiraraViviModeEnabled" data-language-key="text-option">綺々羅々ヴィヴィ（@kikiraravivi）のポストだけを検索</label>
-        </div>
+        <details class="mb-3">
+          <summary data-language-key="text-option">オプション</summary>
 
-        <h5 data-language-key="text-option-filter">フィルター</h5>
-        <div class="form-check">
-          <input type="radio" class="form-check-input" name="radio-filter-option" id="radioFilterOptionNone" value="NONE" checked onchange="refreshConfirmAreaOption()">
-          <label class="form-check-label" for="radioFilterOptionNone" data-language-key="text-option-nofilter">絞り込みを行わない</label>
-        </div>
-        <div class="form-check">
-          <input type="radio" class="form-check-input" name="radio-filter-option" id="radioFilterOptionMedia" value="MEDIA" onchange="refreshConfirmAreaOption()">
-          <label class="form-check-label" for="radioFilterOptionMedia" data-language-key="text-media-only">画像・動画付きだけ</label>
-        </div>
-        <div class="form-check">
-          <input type="radio" class="form-check-input" name="radio-filter-option" id="radioFilterOptionSpace" value="SPACE" onchange="refreshConfirmAreaOption()">
-          <label class="form-check-label" for="radioFilterOptionSpace" data-language-key="text-space-only">スペースのみ</label>
-        </div>
+          <h4 data-language-key="text-date">日付範囲指定</h4>
+
+          <p class="small text-muted" data-language-key="text-date-notes">※チェックボックスで日付範囲の有効/無効を切り替えられます</p>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="checkboxSinceEnabled">
+                    <label class="form-check-label" for="checkboxSinceEnabled" data-language-key="text-date-from">いつから？</label>
+                  </div>
+                  <input type="date" class="form-control form-control-sm" id="textboxSinceDate" value="2024-11-07">
+                  <details class="mt-2">
+                    <summary data-language-key="text-set-time">時刻を設定する</summary>
+                    <input type="time" step="1" value="00:00:00" class="form-control form-control-sm mt-1" id="textboxSinceTime">
+                  </details>
+                  <button class="btn btn-outline-primary btn-sm mt-2" id="buttonSinceYesterdayTag" onclick="clickSinceYesterdayButton()" data-language-key="text-set-yesterday">昨日をセット</button>
+                </div>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="checkboxUntilEnabled">
+                    <label class="form-check-label" for="checkboxUntilEnabled" data-language-key="text-date-to">いつまで？</label>
+                  </div>
+                  <input type="date" class="form-control form-control-sm" id="textboxUntilDate">
+                  <details class="mt-2">
+                    <summary data-language-key="text-set-time">時刻を設定する</summary>
+                    <input type="time" step="1" value="23:59:59" class="form-control form-control-sm mt-1" id="textboxUntilTime">
+                  </details>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h4 data-language-key="text-filter">絞り込み</h4>
+          <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" id="checkboxKikiraraViviModeEnabled">
+            <label class="form-check-label" for="checkboxKikiraraViviModeEnabled"
+              data-language-key="text-filter1">綺々羅々ヴィヴィ（@kikiraravivi）のポストだけを検索</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="radio-filter-option" id="radioFilterOptionNone" value="NONE" checked>
+            <label class="form-check-label" for="radioFilterOptionNone"
+              data-language-key="text-filter2">絞り込みを行わない</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="radio-filter-option" id="radioFilterOptionMedia" value="MEDIA">
+            <label class="form-check-label" for="radioFilterOptionMedia"
+              data-language-key="text-filter3">画像・動画付きだけ</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="radio-filter-option" id="radioFilterOptionSpace" value="SPACE">
+            <label class="form-check-label" for="radioFilterOptionSpace"
+              data-language-key="text-filter4">スペースのみ</label>
+          </div>
+
+
+        </details>
+
+
+        <button class="btn btn-primary w-100" id="searchBtn" onclick="openPage()"
+          data-language-key="text-search">検索</button>
       </div>
     </div>
 
     <!-- 検索 -->
-    <div class="card mb-4">
-      <div class="card-header">
-        <h2 data-language-key="heading-search">3. 設定した条件でXを検索</h2>
-      </div>
+    <div class="card text-center mb-4">
       <div class="card-body">
-        <details class="mb-3" id="detailsSummaryConfirmThisSearch">
-          <summary data-language-key="summary-confirm-this-search">検索内容を確認する</summary>
-          <div>
-            <strong data-language-key="text-date-01">いつから？</strong><br>
-            <span id="confirmValueSince"></span><br>
-            <strong data-language-key="text-date-04">いつまで？</strong><br>
-            <span id="confirmValueUntil"></span><br>
-            <strong data-language-key="text-keyword">キーワード</strong><br>
-            <span id="confirmValueAndOr"></span> <br>
-            <span id="confirmValueKeyword"></span><br>
-            <strong data-language-key="heading-option">オプション</strong><br>
-            <span id="confirmValueOption"></span>
-          </div>
-        </details>
-        <button class="btn btn-primary w-100" id="searchBtn" onclick="openPage()" data-language-key="text-search-btn">検索</button>
+        <p class="card-text">Special Thanks<br>皆月じゅん X:<a target=”_blank” href="https://x.com/minatsukijun">@minatsukijun</a><br>
+        ぬんサーチ(<a target=”_blank” href="https://junminatsuki.github.io/nun-search-x/">nun-search</a>)</p>
       </div>
     </div>
   </div>
@@ -174,4 +186,5 @@
   <script src="assets/js/language.js"></script>
   <script src="assets/js/language-switcher.js"></script>
 </body>
+
 </html>
