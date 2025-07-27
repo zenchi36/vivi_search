@@ -18,67 +18,6 @@ window.addEventListener('load', function updateUntilDate() {
   document.getElementById('textboxUntilDate').value = today;
 })
 
-window.addEventListener('load', function confirmBlockRefresh() {
-  refreshConfirmAreaOption();
-  refreshConfirmAreaSince();
-  refreshConfirmAreaUntil();
-  refreshConfirmAreaAndOr();
-  refreshConfirmAreaKeyword();
-})
-
-function refreshConfirmAreaOption() {
-  if (document.getElementById('checkboxKikiraraViviModeEnabled').checked === true) {
-    document.getElementById('confirmValueOption').innerHTML = document.getElementById('textOption').innerText;
-    if (document.getElementById('radioFilterOptionMedia').checked === true) {
-        document.getElementById('confirmValueOption').innerHTML += "<br>" + document.getElementById('textOptionMedia').innerText;
-    }
-		else if (document.getElementById('radioFilterOptionSpace').checked === true) {
-        document.getElementById('confirmValueOption').innerHTML += "<br>" + document.getElementById('textOptionSpace').innerText;
-    }
-  }
-  else if (document.getElementById('radioFilterOptionMedia').checked === true) {
-    document.getElementById('confirmValueOption').innerHTML = document.getElementById('textOptionMedia').innerText;
-  }
-	else if (document.getElementById('radioFilterOptionSpace').checked === true) {
-        document.getElementById('confirmValueOption').innerHTML = document.getElementById('textOptionSpace').innerText;
-  }
-	else {
-    document.getElementById('confirmValueOption').innerHTML = "";
-  }
-}
-
-function refreshConfirmAreaSince() {
-  if (document.getElementById('checkboxSinceEnabled').checked === true) {
-    document.getElementById('confirmValueSince').innerHTML = document.getElementById('textboxSinceDate').value + " " + document.getElementById('textboxSinceTime').value + " JST";
-  } else {
-    document.getElementById('confirmValueSince').innerHTML = "";
-  }
-}
-
-function refreshConfirmAreaUntil() {
-  if (document.getElementById('checkboxUntilEnabled').checked === true) {
-    document.getElementById('confirmValueUntil').innerHTML = document.getElementById('textboxUntilDate').value + " " + document.getElementById('textboxUntilTime').value + " JST";
-  } else {
-    document.getElementById('confirmValueUntil').innerHTML = "";
-  }
-}
-
-function refreshConfirmAreaKeyword() {
-  document.getElementById('confirmValueKeyword').innerHTML = document.getElementById('textboxKeyword').value;
-}
-
-document.getElementById('textboxKeyword').addEventListener('input', function syncConfirmKeyword() {
-  refreshConfirmAreaKeyword();
-})
-
-function refreshConfirmAreaAndOr() {
-  if (document.getElementById('radioSearchOptionAnd').checked === true) {
-    document.getElementById('confirmValueAndOr').innerHTML = "AND";
-  } else if (document.getElementById('radioSearchOptionOr').checked === true) {
-    document.getElementById('confirmValueAndOr').innerHTML = "OR";
-  }
-}
-
 function clickSinceYesterdayButton() {
   const yesterday = getYesterdayDate();
   document.getElementById('textboxSinceDate').value = yesterday;
@@ -87,7 +26,6 @@ function clickSinceYesterdayButton() {
 
 function clickResetKeywordButton() {
   document.getElementById('textboxKeyword').value = "";
-  refreshConfirmAreaKeyword();
 }
 
 function onClickTagButton(event) {
@@ -99,7 +37,6 @@ function onClickTagButton(event) {
   });
   // "既にある場合は削除"にしたい場合は、上の行を「tags[tags.has(hashTag) ? "delete" : "add"](hashTag);」に変更する
   document.getElementById('textboxKeyword').value = Array.from(tags).join(" ");
-  refreshConfirmAreaKeyword();
 }
 
 function openPage() {
@@ -128,94 +65,71 @@ function openPage() {
   const openUrl = "https://x.com/search?q=" + encodeURIComponent(searchQuery) + "&f=live";
   window.open(openUrl, '_blank');
 }
-function openYrtPage() {
-  let keyword = document.getElementById('textboxKeyword').value;
-  let searchQuery = null;
-  keyword = keyword.replaceAll("#", "%23");
-  if (document.getElementById('radioSearchOptionOr').checked === true) {
-    searchQuery = "(" + keyword + ")";
-  } else {
-    searchQuery = keyword.replaceAll(" ", "+");
+
+function remainBirthDay() {
+  const now = new Date();
+  const birthDay = new Date(now.getFullYear(), 7, 27);
+
+
+  if (now.getMonth() == 7 && now.getDate() == 27) {
+    document.getElementById('todayBirth').style.display = "";
+    document.getElementById('nextBirth').style.display = "none";
   }
-  if (document.getElementById('checkboxKikiraraViviModeEnabled').checked === true) {
-    searchQuery += "+id%3Akikiraravivi";
+
+  if (now.getMonth() > 7 || now.getMonth() == 7 && now.getDate() >= 27) {
+    birthDay.setFullYear(now.getFullYear() + 1);
   }
-  if (document.getElementById('radioFilterOptionMedia').checked === true) {
-    searchQuery += "&mtype=image";
+
+  let text_date = "";
+  const time = birthDay.getTime() - now.getTime();
+  const date = Math.floor(time / 1000 / 60 / 60 / 24);
+  const hour = Math.floor(time / 1000 / 60 / 60) % 24;
+  const minute = Math.floor(time / 1000 / 60) % 60;
+  const second = Math.floor(time / 1000) % 60;
+
+  if (date == 0) {
+    text_date = "";
+  }else{
+    text_date = date + "D ";
   }
-  if (document.getElementById('checkboxSinceEnabled').checked === true) {
-    searchQuery += "&since=" + Date.parse(document.getElementById('textboxSinceDate').value + "T" + document.getElementById('textboxSinceTime').value)/1000;
-  }
-  if (document.getElementById('checkboxUntilEnabled').checked === true) {
-    searchQuery += "&until=" + Date.parse(document.getElementById('textboxUntilDate').value + "T" + document.getElementById('textboxUntilTime').value)/1000;
-  }
-  const openUrl = "https://search.yahoo.co.jp/realtime/search?ei=UTF-8&p=" + searchQuery;
-  window.open(openUrl, '_blank');
-}
-function postSelectKeywords() {
-  const keyword = document.getElementById('textboxKeyword').value;
-  const openUrl = "https://x.com/intent/post?text=" + encodeURIComponent(keyword);
-  window.open(openUrl, '_blank');
-}
-function openBarehenWatch() {
-  let searchQuery = "そらちゃん バレへん";
-  let openUrl = "https://x.com/search?q=" + encodeURIComponent(searchQuery) + "&src=typed_query&f=live";
-  window.open(openUrl, '_blank');
+  text_date += String(hour).padStart(2, '0') + ":" + String(minute).padStart(2, '0') + ":" + String(second).padStart(2, '0');
+  document.getElementById('rBirthDate').textContent = text_date;
+
 }
 
-// フローティングぬんぬん表示切り替え
-function floatingNunnunSwitcher(scrollEnd) {
-  const floatingNunnun = document.querySelector('.floating-nunnun-wrap');
-  const scroll = window.pageYOffset || document.documentElement.scrollTop;
+function remainAnivDay() {
+  const now = new Date();
+  const anivDay = new Date(now.getFullYear(), 10, 9);
 
-  if ((scroll >= 0 && scroll < scrollEnd) || scroll < 0) {
-    floatingNunnun.style.opacity = "1";
-    floatingNunnun.style.zIndex = "100";
-  } else {
-    floatingNunnun.style.opacity = "0";
-    floatingNunnun.style.zIndex = "-100";
+  if (now.getMonth() == 10 && now.getDate() == 9) {
+    document.getElementById('todayAniv').style.display = "";
+    document.getElementById('nextAniv').style.display = "none";
   }
+
+  if (now.getMonth() > 10 || now.getMonth() == 10 && now.getDate() >= 9) {
+    anivDay.setFullYear(now.getFullYear() + 1);
+  }
+
+  let text_date = "";
+  const time = anivDay.getTime() - now.getTime();
+  const year = anivDay.getFullYear() - 2024;
+  const date = Math.floor(time / 1000 / 60 / 60 / 24);
+  const hour = Math.floor(time / 1000 / 60 / 60) % 24;
+  const minute = Math.floor(time / 1000 / 60) % 60;
+  const second = Math.floor(time / 1000) % 60;
+
+  if (date == 0) {
+    text_date = "";
+  }else{
+    text_date = date + "D ";
+  }
+  text_date += String(hour).padStart(2, '0') + ":" + String(minute).padStart(2, '0') + ":" + String(second).padStart(2, '0');
+  document.getElementById('rAnivYear').textContent = year;
+  document.getElementById('rAnivDate').textContent = text_date;
 }
 
-function calcScrollEnd(scrollEndOffset) {
-  return document.getElementById('searchBtn').getBoundingClientRect().top + window.scrollY - window.innerHeight + scrollEndOffset;
-}
-
-window.addEventListener('DOMContentLoaded', () => { 
-  const scrollEndOffset = 30; 
-  const detailsSetSinceTime = document.getElementById('detailsSetSinceTime');
-  const detailsSetUntilTime = document.getElementById('detailsSetUntilTime');
-  const detailsKeywordArchive = document.getElementById('detailsKeywordArchive');
-  const detailsSummaryConfirmThisSearch = document.getElementById('detailsSummaryConfirmThisSearch');
-
-  detailsSetSinceTime.addEventListener('toggle', () => {
-    floatingNunnunSwitcher(calcScrollEnd(scrollEndOffset));
-  })
-
-  detailsSetUntilTime.addEventListener('toggle', () => {
-    floatingNunnunSwitcher(calcScrollEnd(scrollEndOffset));
-  })
-
-  detailsKeywordArchive.addEventListener('toggle', () => {
-    floatingNunnunSwitcher(calcScrollEnd(scrollEndOffset));
-  })
-
-  detailsSummaryConfirmThisSearch.addEventListener('toggle', () => {
-    floatingNunnunSwitcher(calcScrollEnd(scrollEndOffset));
-  })
-
-  window.addEventListener('resize', () => {
-    floatingNunnunSwitcher(calcScrollEnd(scrollEndOffset));
-  })
-
-  window.addEventListener('scroll', () => {
-    floatingNunnunSwitcher(calcScrollEnd(scrollEndOffset));
-  })
-
-  window.addEventListener('load', () => {
-    floatingNunnunSwitcher(calcScrollEnd(scrollEndOffset));
-  })
-})
+setInterval(remainBirthDay, 1000);
+setInterval(remainAnivDay, 1000);
 
 // X埋め込み テーマ切り替え
 const darkmode = window.matchMedia('(prefers-color-scheme: dark)');
