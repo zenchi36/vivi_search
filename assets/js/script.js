@@ -53,7 +53,7 @@ function openPage() {
   if (document.getElementById('radioFilterOptionMedia').checked === true) {
     searchQuery += " filter:media";
   }
-	 if (document.getElementById('radioFilterOptionSpace').checked === true) {
+  if (document.getElementById('radioFilterOptionSpace').checked === true) {
     searchQuery += " filter:spaces";
   }
   if (document.getElementById('checkboxSinceEnabled').checked === true) {
@@ -89,7 +89,7 @@ function remainBirthDay() {
 
   if (date == 0) {
     text_date = "";
-  }else{
+  } else {
     text_date = date + "D ";
   }
   text_date += String(hour).padStart(2, '0') + ":" + String(minute).padStart(2, '0') + ":" + String(second).padStart(2, '0');
@@ -120,7 +120,7 @@ function remainAnivDay() {
 
   if (date == 0) {
     text_date = "";
-  }else{
+  } else {
     text_date = date + "D ";
   }
   text_date += String(hour).padStart(2, '0') + ":" + String(minute).padStart(2, '0') + ":" + String(second).padStart(2, '0');
@@ -133,16 +133,16 @@ setInterval(remainAnivDay, 1000);
 
 // X埋め込み テーマ切り替え
 const darkmode = window.matchMedia('(prefers-color-scheme: dark)');
-function loadWidgets(){
+function loadWidgets() {
   const embed = document.querySelectorAll('blockquote.twitter-tweet');
-  if(embed.length === 0){
+  if (embed.length === 0) {
     return
   }
-  for(let i = 0; i < embed.length; i++){
-    if(darkmode.matches){
+  for (let i = 0; i < embed.length; i++) {
+    if (darkmode.matches) {
       embed[i].setAttribute('data-theme', 'dark');
-      } else {
-      embed[i].setAttribute('data-theme', 'light'); 
+    } else {
+      embed[i].setAttribute('data-theme', 'light');
     }
     embed[i].setAttribute('data-width', '550');
     embed[i].setAttribute('data-align', 'center');
@@ -151,14 +151,14 @@ function loadWidgets(){
   script.src = "https://platform.twitter.com/widgets.js";
   document.body.appendChild(script);
 }
-  
-function changeEmbedX(){
+
+function changeEmbedX() {
   const iframe = document.querySelectorAll('div.twitter-tweet-rendered iframe');
-  if(iframe.length === 0){
+  if (iframe.length === 0) {
     return
   }
-  for(let i = 0; i < iframe.length; i++){
-    if(darkmode.matches){
+  for (let i = 0; i < iframe.length; i++) {
+    if (darkmode.matches) {
       iframe[i].src = iframe[i].src.replace('&theme=light&', '&theme=dark&');
     } else {
       iframe[i].src = iframe[i].src.replace('&theme=dark&', '&theme=light&');
@@ -166,5 +166,105 @@ function changeEmbedX(){
   }
 }
 
+function generateCalendar(startYear, startMonth) {
+  const container = document.getElementById("calendar-container");
+  const today = new Date();
+  const endYear = today.getFullYear();
+  const endMonth = today.getMonth(); // 0-indexed
+
+  const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
+
+  for (let year = endYear; year >= startYear; year--) {
+    const monthStart = (year === startYear) ? startMonth : 0;
+    const monthEnd = (year === endYear) ? endMonth : 11;
+
+    for (let month = monthEnd; month >= monthStart; month--) {
+      const firstDay = new Date(year, month, 1);
+      const lastDay = new Date(year, month + 1, 0);
+      const monthTitle = `${year}年${month + 1}月`;
+
+      const card = document.createElement("div");
+      card.className = "mb-4 card";
+
+      const cardHeader = document.createElement("div");
+      cardHeader.className = "card-header";
+      cardHeader.innerHTML = `<h3 class="mb-0">${monthTitle}</h3>`;
+      card.appendChild(cardHeader);
+
+      const cardBody = document.createElement("div");
+      cardBody.className = "card-body";
+
+      const table = document.createElement("table");
+      table.className = "table table-bordered text-center";
+
+      const thead = document.createElement("thead");
+      thead.className = "table-primary";
+      const headRow = document.createElement("tr");
+      weekdays.forEach(day => {
+        const th = document.createElement("th");
+        th.textContent = day;
+        headRow.appendChild(th);
+      });
+      thead.appendChild(headRow);
+      table.appendChild(thead);
+
+      const tbody = document.createElement("tbody");
+      let row = document.createElement("tr");
+
+      for (let i = 0; i < firstDay.getDay(); i++) {
+        const td = document.createElement("td");
+        td.className = "text-muted";
+        td.textContent = '';
+        row.appendChild(td);
+      }
+
+      for (let date = 1; date <= lastDay.getDate(); date++) {
+        const currentDate = new Date(year, month, date);
+        const td = document.createElement("td");
+        const y = year.toString().padStart(4, '0');
+        const m = (month + 1).toString().padStart(2, '0');
+        const d = date.toString().padStart(2, '0');
+        const dateStr = `${y}${m}${d}`;
+
+        const links = oha_date
+          .filter(entry => entry.odate === dateStr)
+          .map(entry => `<a href="https://x.com/kikiraravivi/status/${entry.id}" target="_blank">☀</a>`);
+
+        td.innerHTML = `${date} ${links.join('')}`;
+
+        if (
+          currentDate.getFullYear() === today.getFullYear() &&
+          currentDate.getMonth() === today.getMonth() &&
+          currentDate.getDate() === today.getDate()
+        ) {
+          td.classList.add("bg-warning", "fw-bold");
+        }
+
+        row.appendChild(td);
+
+        if (currentDate.getDay() === 6 || date === lastDay.getDate()) {
+          tbody.appendChild(row);
+          row = document.createElement("tr");
+        }
+      }
+
+      table.appendChild(tbody);
+      cardBody.appendChild(table);
+      card.appendChild(cardBody);
+      container.appendChild(card);
+    }
+  }
+}
+
+
+const oha_date = [
+  { odate: "20250811", otime: "1930", id: "1952485254029361203" },
+  { odate: "20250801", otime: "1930", id: "1952485254029361204" },
+  { odate: "20250801", otime: "1930", id: "1952485254029361205" }
+];
+
+
+// 2024年10月から開始
+generateCalendar(2024, 9);
 window.addEventListener('DOMContentLoaded', loadWidgets);
 darkmode.addEventListener('change', changeEmbedX);
