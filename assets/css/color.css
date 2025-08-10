@@ -78,3 +78,7 @@ a {
 a:hover {
   color: var(--vivi-pink-text);
 }
+
+.bg_today {
+  background-color: var(--vivi-pink-light) !important;
+}
