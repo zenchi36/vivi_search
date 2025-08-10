@@ -69,7 +69,7 @@ function generateCalendar(startYear, startMonth) {
           currentDate.getMonth() === today.getMonth() &&
           currentDate.getDate() === today.getDate()
         ) {
-          td.classList.add("bg-warning", "fw-bold");
+          td.classList.add("bg_today", "fw-bold");
         }
 
         row.appendChild(td);
