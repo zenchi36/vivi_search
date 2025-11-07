@@ -89,6 +89,8 @@ function generateCalendar(startYear, startMonth) {
 }
 
 const oha_date = [
+  https://x.com/kikiraravivi/status/1986637512891351349?s=46
+  { odate: "20251107", otime: "1231", id: "1986637512891351349",icon:"🔆" },
   { odate: "20251105", otime: "1052", id: "1985887899913764884",icon:"🔆" },
   { odate: "20251030", otime: "1013", id: "1983703842249416752",icon:"🔆" },
   { odate: "20251029", otime: "1246", id: "1983379836505931990",icon:"🔆" },
