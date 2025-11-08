@@ -30,7 +30,7 @@
 
     'text-hbd': '🎂誕生日おめでとう🎉',
     'text-timer-birth': 'お誕生日まで',
-    'text-debut': '🎤デビューおめでとう🎉',
+    'text-debut': '🎤1周年おめでとう🎉',
     'text-timer-aniv': '周年まで',
     
     
@@ -65,7 +65,7 @@
     'text-search': 'Search',
     'text-hbd': '🎂Happy Birthday🎉',
     'text-timer-birth': 'Vivi\'s birthday is in',
-    'text-debut': '🎤Congratulations on your debut!🎉',
+    'text-debut': '🎤Congratulations on your 1st anniversary!🎉',
     'text-timer-aniv': 'st anniversary in',
   },
 };
