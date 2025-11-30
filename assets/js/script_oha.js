@@ -89,6 +89,7 @@ function generateCalendar(startYear, startMonth) {
 }
 
 const oha_date = [
+  { odate: "20251128", otime: "1200", id: "1994239973126467627",icon:"🔆" },
   { odate: "20251127", otime: "1315", id: "1993896319350657082",icon:"🔆" },
   { odate: "20251107", otime: "1231", id: "1986637512891351349",icon:"🔆" },
   { odate: "20251105", otime: "1052", id: "1985887899913764884",icon:"🔆" },
