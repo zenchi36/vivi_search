@@ -60,7 +60,7 @@ function generateCalendar(startYear, startMonth) {
 
         const links = oha_date
           .filter(entry => entry.odate === dateStr)
-          .map(entry => `<br><a href="https://x.com/kikiraravivi/status/${entry.id}" target="_blank">${entry.icon}</a>`);
+          .map(entry => `<br><a href="${entry.id}" target="_blank">${entry.icon}</a>`);
 
         td.innerHTML = `${date} ${links.join('')}`;
 
