@@ -102,7 +102,6 @@ const oha_date = [
   { odate: "20260304", otime: "0000", id: "https://www.youtube.com/shorts/28kGjS3a5aY",icon:"💃" },
   { odate: "20260303", otime: "0000", id: "https://www.youtube.com/shorts/6sNSFVUooFo",icon:"💃" },
   { odate: "20260302", otime: "0000", id: "https://www.youtube.com/shorts/Z27Auq0BQtQ",icon:"💃" },
-　{ odate: "20260301", otime: "0000", id: "https://www.youtube.com/shorts/Z27Auq0BQtQ",icon:"💃" },                     
   { odate: "20260228", otime: "0000", id: "https://www.youtube.com/shorts/TdrjhmFoCDI",icon:"💃" },
   { odate: "20260227", otime: "0000", id: "https://www.youtube.com/shorts/-A9pbpZM2NQ",icon:"💃" },
   { odate: "20260226", otime: "0000", id: "https://www.youtube.com/shorts/oeIo6Uam6XE",icon:"💃" },
