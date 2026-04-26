@@ -89,6 +89,14 @@ function generateCalendar(startYear, startMonth) {
 }
 
 const oha_date = [
+  { odate: "20260426", otime: "0000", id: "https://www.youtube.com/shorts/LosggPNFU0w",icon:"💃" },
+  { odate: "20260425", otime: "0000", id: "https://www.youtube.com/shorts/OHU-Dvone6Y",icon:"💃" },
+  { odate: "20260424", otime: "0000", id: "https://www.youtube.com/shorts/19twQ27JFT4",icon:"💃" },
+  { odate: "20260423", otime: "0000", id: "https://www.youtube.com/shorts/pnyRgnM0z3w",icon:"💃" },
+  { odate: "20260422", otime: "0000", id: "https://www.youtube.com/shorts/tB6W9CcJymw",icon:"💃" },
+  { odate: "20260421", otime: "0000", id: "https://www.youtube.com/shorts/TM3qS75xOZU",icon:"💃" },
+  { odate: "20260420", otime: "0000", id: "https://www.youtube.com/shorts/Nwg6-c3Vvss",icon:"💃" },
+  { odate: "20260419", otime: "0000", id: "https://www.youtube.com/shorts/NiaalKyrWp4",icon:"💃" },
   { odate: "20260418", otime: "0000", id: "https://www.youtube.com/shorts/KYqPWbLQdY0",icon:"💃" },
   { odate: "20260417", otime: "0000", id: "https://www.youtube.com/shorts/Mx7KGWOTHL0",icon:"💃" },
   { odate: "20260416", otime: "0000", id: "https://www.youtube.com/shorts/OW1QqXRCc8E",icon:"💃" },
