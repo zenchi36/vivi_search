@@ -89,6 +89,17 @@ function generateCalendar(startYear, startMonth) {
 }
 
 const oha_date = [
+  { odate: "20260610", otime: "0931", id: "https://x.com/kikiraravivi/status/2064505622780055903",icon:"🔆" },
+  { odate: "20260610", otime: "0000", id: "https://www.youtube.com/shorts/I5EEsP9g8Nk",icon:"💃" },
+  { odate: "20260609", otime: "0000", id: "https://www.youtube.com/shorts/BeSLmliLtnY",icon:"💃" },
+  { odate: "20260608", otime: "0000", id: "https://www.youtube.com/shorts/OqnkxunxJRY",icon:"💃" },
+  { odate: "20260607", otime: "0000", id: "https://www.youtube.com/shorts/AhXVDaHRmzE",icon:"💃" },
+  { odate: "20260606", otime: "0000", id: "https://www.youtube.com/shorts/opr_PsS7-oE",icon:"💃" },
+  { odate: "20260605", otime: "0000", id: "https://www.youtube.com/shorts/X2pUu1plK0Q",icon:"💃" },
+  { odate: "20260604", otime: "0000", id: "https://www.youtube.com/shorts/A9VxEgbXNyE",icon:"💃" },
+  { odate: "20260603", otime: "0000", id: "https://www.youtube.com/shorts/wieQnCNZcyI",icon:"💃" },
+  { odate: "20260602", otime: "0000", id: "https://www.youtube.com/shorts/eiuBMYYHuPw",icon:"💃" },
+  { odate: "20260601", otime: "0000", id: "https://www.youtube.com/shorts/hHBS6c8ZrUw",icon:"💃" },
   { odate: "20260531", otime: "0000", id: "https://www.youtube.com/shorts/sIgqOqnzUOg",icon:"💃" },
   { odate: "20260530", otime: "0000", id: "https://www.youtube.com/shorts/jlKtrKHVPyo",icon:"💃" },
   { odate: "20260529", otime: "0000", id: "https://www.youtube.com/shorts/AuM1_g82N-s",icon:"💃" },
