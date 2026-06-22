@@ -89,6 +89,10 @@ function generateCalendar(startYear, startMonth) {
 }
 
 const oha_date = [
+  { odate: "20260622", otime: "0000", id: "https://www.youtube.com/shorts/spM8CZwL6Ko",icon:"✂" },
+  { odate: "20260621", otime: "0000", id: "https://www.youtube.com/shorts/ilPtkvD-A-Q",icon:"💃" },
+  { odate: "20260620", otime: "0000", id: "https://www.youtube.com/shorts/brECACubLbk",icon:"💃" },
+  { odate: "20260619", otime: "0000", id: "https://www.youtube.com/shorts/ND1mmGWRzWw",icon:"💃" },
   { odate: "20260618", otime: "0000", id: "https://www.youtube.com/shorts/T0JAu4PNVRQ",icon:"💃" },
   { odate: "20260617", otime: "0000", id: "https://www.youtube.com/shorts/JovMcriLNik",icon:"✂" },
   { odate: "20260616", otime: "0000", id: "https://www.youtube.com/shorts/6KjoDfekvss",icon:"💃" },
