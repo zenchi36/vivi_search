@@ -1,8 +1,8 @@
 function generateCalendar(startYear, startMonth) {
   const container = document.getElementById("calendar-container");
   const today = new Date();
-  const endYear = today.getFullYear();
-  const endMonth = today.getMonth(); // 0-indexed
+  const endYear = 2025;
+  const endMonth = 11; // 0-indexed
 
   const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
 
